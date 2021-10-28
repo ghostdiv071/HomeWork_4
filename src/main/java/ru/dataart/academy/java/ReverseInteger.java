@@ -12,10 +12,11 @@ public class ReverseInteger {
      * unchecked exception. In main method (Main class) if exception happened output message with problem to user.
      */
     public int reverse(int inputNumber) {
+        int msg = inputNumber;
         int result = 0;
         while (inputNumber != 0) {
-            if (result > Integer.MAX_VALUE / 10 || Integer.MAX_VALUE - Math.abs(inputNumber) % 10  < result * 10) {
-                throw new NumberOutOfRangeException();
+            if (Math.abs(result) > Integer.MAX_VALUE / 10 || Integer.MAX_VALUE - Math.abs(inputNumber) % 10  < Math.abs(result) * 10) {
+                throw new NumberOutOfRangeException("Reverse number is out of range for number " + msg);
             }
             result = result * 10 + inputNumber % 10;
             inputNumber /= 10;
